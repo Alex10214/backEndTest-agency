@@ -7,7 +7,6 @@ export class GenerationController {
 
   @Post()
   async create(@Body() obj: any) {
-    console.log(obj);
     await this.generationService.create(obj);
   }
 }

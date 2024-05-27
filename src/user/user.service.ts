@@ -44,8 +44,6 @@ export class UserService {
       photo: resizePhoto,
     };
 
-    console.log('newUser', newUser);
-
     const createdUser = await this.userRepository.save(newUser);
 
     return {
@@ -111,7 +109,6 @@ export class UserService {
   }
 
   async findOne(id: number | string) {
-    console.log(id);
     if (typeof id === 'string' || Number.isNaN(id)) {
       throw new BadRequestException('The user must be an integer.');
     }

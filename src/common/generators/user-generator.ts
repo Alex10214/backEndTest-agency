@@ -17,7 +17,6 @@ export async function generateUser() {
     registration_timestamp: customDate(new Date()),
   };
 
-  console.log('GENERATED USER', user);
   return user;
 }
 

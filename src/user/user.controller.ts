@@ -9,7 +9,6 @@ import {
   UseInterceptors,
   FileTypeValidator,
   MaxFileSizeValidator,
-  UsePipes,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -17,7 +16,6 @@ import { PageAndPageDto } from './dto/pageAndPage.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { CustomValidationPipe } from '../common/pipes/custom-validation-pipe';
 import { CustomParseFilePipe } from '../common/pipes/сustom-parse-file-pipe';
-import { CustomHeaders } from '../common/pipes/CustomDecorator';
 
 @Controller('users')
 export class UserController {
