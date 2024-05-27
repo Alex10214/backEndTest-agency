@@ -17,7 +17,6 @@ import { PageAndPageDto } from './dto/pageAndPage.dto';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { CustomValidationPipe } from '../common/pipes/custom-validation-pipe';
 import { CustomParseFilePipe } from '../common/pipes/сustom-parse-file-pipe';
-import { TokenValidatorPipe } from '../common/pipes/token-validator-pipe';
 import { CustomHeaders } from '../common/pipes/CustomDecorator';
 
 @Controller('users')
@@ -26,12 +25,9 @@ export class UserController {
 
   @Post()
   @UseInterceptors(FileInterceptor('photo'))
-  // @UseGuards(TokenGuard)
-  @UsePipes(TokenValidatorPipe)
   async create(
     @Body(CustomValidationPipe)
     createUserDto: CreateUserDto,
-    @CustomHeaders(new TokenValidatorPipe()) request: any,
     @UploadedFile(
       new CustomParseFilePipe({
         fileIsRequired: true,
@@ -43,7 +39,6 @@ export class UserController {
     )
     file: Express.Multer.File,
   ) {
-    console.log(1111);
     const userWithPhoto = {
       ...createUserDto,
       photo: file,
